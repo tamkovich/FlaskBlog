@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FLASK APP</title>
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Fontawesome core CSS -->
+    <link href="{{ url_for('static', filename='font-awesome/css/fontawesome.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='font-awesome/css/all.css') }}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/blog/blog.css') }}" rel="stylesheet">
+
+    <link href="{{ url_for('static', filename='css/jaselnik/main.css') }}" rel="stylesheet">
+</head>
+<body>
+
+    <div class="navbar navbar-expand-md navbar-white bg-white fixed-top">
+      <a class="navbar-brand" href="/">
+          <img style="max-width: 120px; " src="{{ url_for('static', filename='images/jaselogo.png') }}">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <button type="button" class="btn btn-primary"><i class="fas fa-power-off"></i> Let start!</button>
+        </ul>
+          <ul class="nav justify-content-end">
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+          <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal-l"><i class="fas fa-sign-in-alt"></i> Login</button>
+          <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal-su"><i class="fas fa-plus"></i> Sign Up</button>
+
+          <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+              <a class="dropdown-item" href="#">Dropdown link</a>
+              <a class="dropdown-item" href="#">Dropdown link</a>
+            </div>
+          </div>
+        </div>
+        </ul>
+      </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal-l" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
+                <div class="form-group">
+                    <label for="uname1">Username</label>
+                    <input type="text" class="form-control form-control-lg rounded-0" name="uname1" id="uname1" required="">
+                    <div class="invalid-feedback">Oops, you missed this one.</div>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control form-control-lg rounded-0" id="pwd1" required="" autocomplete="new-password">
+                    <div class="invalid-feedback">Enter your password too!</div>
+                </div>
+                <button type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Login</button>
+              </form>
+{#          <form class="form">#}
+{#            <div class="form-group">#}
+{#              <img class="mb-4" src="{{ url_for('static', filename='images/jaselogo.png') }}" alt="" height="72">#}
+{#              <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>#}
+{#              <label for="inputEmail" class="sr-only">Email address</label>#}
+{#              <input id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="" type="email">#}
+{#              <label for="inputPassword" class="sr-only">Password</label>#}
+{#              <input id="inputPassword" class="form-control" placeholder="Password" required="" type="password">#}
+{#              <hr>#}
+{#              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>#}
+{#              <button type="button" class="btn btn-primary">Send message</button>#}
+{#            </div>#}
+{#          </form>#}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal-su" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Sign-Up</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h3 class="text-center mb-4">Sign-up</h3>
+            <div class="alert alert-danger">
+                <a class="close font-weight-light" data-dismiss="alert" href="#">×</a>Password is too short.
+            </div>
+            <fieldset>
+                <div class="form-group has-error">
+                    <input class="form-control input-lg" placeholder="E-mail Address" name="email" type="text">
+                </div>
+                <div class="form-group has-success">
+                    <input class="form-control input-lg" placeholder="Password" name="password" value="" type="password">
+                </div>
+                <div class="form-group has-success">
+                    <input class="form-control input-lg" placeholder="Confirm Password" name="password" value="" type="password">
+                </div>
+                <div class="form-group">
+                    <select class="form-control input-lg">
+                        <option selecterd="">Sequrity Question</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input class="form-control input-lg" placeholder="Sequrity Answer" name="answer" value="" type="text">
+                </div>
+                <div class="checkbox">
+                    <label class="small">
+                        <input name="terms" type="checkbox">I have read and agree to the <a href="#">terms of service</a>
+                    </label>
+                </div>
+                <input class="btn btn-lg btn-primary btn-block" value="Sign Me Up" type="submit">
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main role="main" class="container">
+
+      <div class="starter-template">
+        <h1>Starter template</h1>
+      </div>
+
+    </main>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{ url_for('static', filename='js/jquery-3.3.1.slim.min.js') }}"></script>
+    <script>window.jQuery || document.write('<script src="{{ url_for('static', filename='assets/js/vendor/jquery-slim.min.js') }}"><\/script>')</script>
+    <script src="{{ url_for('static', filename='assets/js/vendor/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/vendor/holder.min.js') }}"></script>
+
+
+</body>
+</html>
