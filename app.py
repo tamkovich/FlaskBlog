@@ -1,4 +1,6 @@
-from flask import Flask, render_template, flash
+from flask import Flask, render_template, flash, request, redirect, url_for
+
+from dbconnect import connection
 
 app = Flask(__name__)
 
@@ -8,15 +10,22 @@ def hello_world():
     return render_template('main.html')
 
 
-@app.route('/login/')
+@app.route('/login/', methods=['GET', 'POST'])
 def login():
+    if request.method == 'POST':
+        flash(request.form['username'])
+        flash(request.form['password'])
     return render_template('account/login.html')
 
 
-@app.route('/sign-up/')
+@app.route('/sign-up/', methods=['GET', 'POST'])
 def sign_up():
-    return render_template('account/sign-up.html')
-
+    try:
+        c, conn = connection()
+        # return render_template('account/sign-up.html')
+        return 'OKAY' + '\n' + str(c) + '\n' + str(conn)
+    except Exception as e:
+        return str(e)
 
 @app.route('/jaselnik/halloffame/')
 def halloffame():
