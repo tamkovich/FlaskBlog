@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FLASK APP</title>
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Fontawesome core CSS -->
+    <link href="{{ url_for('static', filename='font-awesome/css/fontawesome.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='font-awesome/css/all.css') }}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/blog/blog.css') }}" rel="stylesheet">
+
+    <link href="{{ url_for('static', filename='css/jaselnik/main.css') }}" rel="stylesheet">
+</head>
+<body>
+
+    <div class="navbar navbar-expand-md navbar-white bg-white fixed-top">
+      <a class="navbar-brand" href="/">
+          <img style="max-width: 120px; " src="{{ url_for('static', filename='images/jaselogo.png') }}">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <button type="button" class="btn btn-primary"><i class="fas fa-power-off"></i> Let start!</button>
+            <a href="/jaselnik/halloffame/" type="button" class="btn btn-success" style="margin-left: 4px"><i class="fas fa-medal"></i> Jaselnik's Hall of Fame</a>
+        </ul>
+          <ul class="nav justify-content-end">
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+          <a href="/login/" type="button" class="btn btn-secondary"><i class="fas fa-sign-in-alt"></i> Login</a>
+          <a href="/sign-up/" type="button" class="btn btn-secondary"><i class="fas fa-plus"></i> Sign Up</a>
+
+          <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+              <a class="dropdown-item" href="#">Dropdown link</a>
+              <a class="dropdown-item" href="#">Dropdown link</a>
+            </div>
+          </div>
+        </div>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container-fluid" style="margin-top: 100px; min-height: 100%">
+
+        <main role="main" class="container">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-warning alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+            {% endwith %}
+          {% block body %}
+          {% endblock %}
+        </main>
+
+    </div>
+
+{#    <footer class="footer">#}
+{#      <div class="container">#}
+{#        <span class="text-muted">Place sticky footer content here.</span>#}
+{#      </div>#}
+{#    </footer>#}
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{ url_for('static', filename='js/jquery-3.3.1.slim.min.js') }}"></script>
+    <script>window.jQuery || document.write('<script src="{{ url_for('static', filename='assets/js/vendor/jquery-slim.min.js') }}"><\/script>')</script>
+    <script src="{{ url_for('static', filename='assets/js/vendor/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/vendor/holder.min.js') }}"></script>
+
+
+</body>
+</html>
