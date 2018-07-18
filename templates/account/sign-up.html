@@ -5,33 +5,14 @@
     <div class="row">
         <div class="col-md-6 mx-auto">
                 <div class="card card-body">
-                    <div class="alert alert-danger">
-                        <a class="close font-weight-light" data-dismiss="alert" href="#">×</a>Password is too short.
-                    </div>
                     <fieldset>
-                        <div class="form-group has-error">
-                            <input class="form-control input-lg" placeholder="E-mail Address" name="email" type="text">
-                        </div>
-                        <div class="form-group has-success">
-                            <input class="form-control input-lg" placeholder="Password" name="password" value="" type="password">
-                        </div>
-                        <div class="form-group has-success">
-                            <input class="form-control input-lg" placeholder="Confirm Password" name="password" value="" type="password">
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control input-lg">
-                                <option selecterd="">Sequrity Question</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control input-lg" placeholder="Sequrity Answer" name="answer" value="" type="text">
-                        </div>
-                        <div class="checkbox">
-                            <label class="small">
-                                <input name="terms" type="checkbox">I have read and agree to the <a href="#">terms of service</a>
-                            </label>
-                        </div>
+                    {% from "_formhelpers.html" import render_regform_field %}
+                    <form action="/sign-up/" method="post">
+                    {% for field in form %}
+                        {{ render_regform_field(field) }}
+                    {% endfor %}
                         <input class="btn btn-lg btn-primary btn-block" value="Sign Me Up" type="submit">
+                    </form>
                     </fieldset>
                 </div>
         </div>

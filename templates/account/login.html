@@ -24,6 +24,7 @@
                                     <input type="password" class="form-control form-control-lg rounded-0" name="password" id="pwd1" required="" autocomplete="new-password" value="{{ request.form.password }}">
                                     <div class="invalid-feedback">Enter your password too!</div>
                                 </div>
+                                {{ error }}
                                 <button type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Login</button>
                             </form>
                         </div>
