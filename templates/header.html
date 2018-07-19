@@ -32,8 +32,13 @@
         </ul>
           <ul class="nav justify-content-end">
         <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+
+          {% if session.logged_in %}
+          <a href="/logout/" type="button" class="btn btn-secondary"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          {% else %}
           <a href="/login/" type="button" class="btn btn-secondary"><i class="fas fa-sign-in-alt"></i> Login</a>
           <a href="/sign-up/" type="button" class="btn btn-secondary"><i class="fas fa-plus"></i> Sign Up</a>
+          {% endif %}
 
           <div class="btn-group" role="group">
             <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
